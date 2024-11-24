@@ -4,7 +4,7 @@ from django.db import models
 from django.urls import reverse
 
 
-from pages.mixins import models as mixins
+from core.mixins import models as mixins
 
 class Requirement(
     mixins.NameDescriptionMixin,

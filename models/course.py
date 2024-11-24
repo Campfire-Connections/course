@@ -6,8 +6,8 @@ from django.core.exceptions import ValidationError
 
 from taggit.managers import TaggableManager
 
-from pages.mixins import models as mixins
-from pages.mixins import settings as stgs
+from core.mixins import models as mixins
+from core.mixins import settings as stgs
 from enrollment.models.organization import OrganizationEnrollment, OrganizationCourse
 
 from .requirement import Requirement
