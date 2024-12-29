@@ -30,10 +30,10 @@ class FacilityClass(
     facility_enrollment = models.ForeignKey(
         FacilityEnrollment,
         on_delete=models.CASCADE,
-        related_name="facility_classes",
+        related_name="class_facility_enrollments",
         verbose_name="Facility Enrollment",
     )
-    max_enrollment = models.PositiveIntegerField(default=30)  # New field
+    max_enrollment = models.PositiveIntegerField(default=30)
 
     def clean(self):
         """Ensure class is within the enrollment period of the facility."""
