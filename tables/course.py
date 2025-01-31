@@ -38,12 +38,12 @@ from ..models.course import Course
 
 class CourseTable(BaseTable):
     """
-    CourseTable is a Django table that organizes and displays information about courses, including 
+    CourseTable is a Django table that organizes and displays information about courses, including
     their names, descriptions, images, and active status.
 
-    This table is built using django-tables2 and provides a structured view of the Course model. It 
-    includes columns for course name, description, image representation, and the active status of 
-    the course. The `render_active` method formats the active status into a visually distinct badge, 
+    This table is built using django-tables2 and provides a structured view of the Course model. It
+    includes columns for course name, description, image representation, and the active status of
+    the course. The `render_active` method formats the active status into a visually distinct badge,
     indicating whether the course is active or inactive.
 
     Attributes:
@@ -80,3 +80,12 @@ class CourseTable(BaseTable):
         status_label = "Active" if value else "Inactive"
         css_class = "badge-success" if value else "badge-secondary"
         return mark_safe(f'<span class="badge {css_class}">{status_label}</span>')
+
+    url_namespace = "courses"
+    urls = {
+        "add": {"kwargs": {"facility_slug": "facility__slug"}},
+        "show": {"kwargs": {"course_slug": "slug"}},
+        "edit": {"kwargs": {"course_slug": "slug"}},
+        "delete": {"kwargs": {"course_slug": "slug"}},
+    }
+    available_actions = ["show", "edit", "delete"]

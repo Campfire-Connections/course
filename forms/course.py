@@ -13,4 +13,4 @@ class CourseForm(forms.ModelForm):
         self.fields["name"].widget.attrs.update({"class": "form-control"})
         self.fields["description"].widget.attrs.update({"class": "form-control"})
         self.fields["image"].widget.attrs.update({"class": "form-control"})
-        self.fields["active"].widget.attrs.update({"class": "form-control"})
+        #self.fields["active"].widget.attrs.update({"class": "form-control"})

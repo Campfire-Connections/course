@@ -8,7 +8,7 @@ from ..views.facility_class import (
 app_name = 'facility_class'
 
 urlpatterns = [
-    path('', ListView.as_view(), name='list'),
+    path('', ListView.as_view(), name='index'),
     path('new/', CreateView.as_view(), name='new'),
     path('<int:pk>/edit/', UpdateView.as_view(), name='edit'),
     path('<slug:facility_class_slug>/edit/', UpdateView.as_view(), name='edit'),

@@ -2,15 +2,15 @@
 
 from django.urls import path
 from ..views.course import (
-    ListView, CreateView,
+    IndexView, CreateView,
     UpdateView, DeleteView
 )
 
 app_name = 'courses'
 
 urlpatterns = [
-    path('', ListView.as_view(), name='list'),
-    path('new/', CreateView.as_view(), name='create'),
+    path('', IndexView.as_view(), name='index'),
+    path('new/', CreateView.as_view(), name='new'),
     path('<int:pk>/edit/', UpdateView.as_view(), name='update'),
     path('<slug:slug>/edit/', UpdateView.as_view(), name='update'),
     path('<int:pk>/delete/', DeleteView.as_view(), name='delete'),
