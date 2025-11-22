@@ -1,7 +1,6 @@
 # course/views/organization_course.py
 
-from django.urls import reverse_lazy, reverse
-from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy
 
 from core.views.base import (
     BaseIndexByFilterTableView,
@@ -49,12 +48,9 @@ class ShowView(BaseDetailView):
     context_object_name = "course"
     slug_field = "slug"
     slug_url_kwarg = "course_slug"
+    pk_url_kwarg = "course_id"
 
-    def get_object(self):
-        course_id = self.kwargs.get("course_id")
-        course_slug = self.kwargs.get("course_slug")
-        if course_id:
-            return get_object_or_404(Course, pk=course_id)
-        else:
-            return get_object_or_404(Course, slug=course_slug)
-
+    def get_queryset(self):
+        return Course.objects.select_related("parent").prefetch_related(
+            "requirements", "prerequisites"
+        )

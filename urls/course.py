@@ -2,8 +2,11 @@
 
 from django.urls import path
 from ..views.course import (
-    IndexView, CreateView,
-    UpdateView, DeleteView
+    CreateView,
+    DeleteView,
+    IndexView,
+    ShowView,
+    UpdateView,
 )
 
 app_name = 'courses'
@@ -11,6 +14,8 @@ app_name = 'courses'
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('new/', CreateView.as_view(), name='new'),
+    path('<int:course_id>/', ShowView.as_view(), name='show_by_id'),
+    path('<slug:course_slug>/', ShowView.as_view(), name='show'),
     path('<int:pk>/edit/', UpdateView.as_view(), name='update'),
     path('<slug:slug>/edit/', UpdateView.as_view(), name='update'),
     path('<int:pk>/delete/', DeleteView.as_view(), name='delete'),
