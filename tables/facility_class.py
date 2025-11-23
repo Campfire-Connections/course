@@ -68,7 +68,7 @@ class FacilityClassTable(BaseTable):
 
     url_namespace = "facilities:classes"
     urls = {
-        "add": {"kwargs": {"facility_slug": "facility_enrollment__facility__slug"}},
+        "add": {"kwargs": {"facility_slug": "facility_slug"}},
         "show": {
             "kwargs": {
                 "facility_slug": "facility_enrollment__facility__slug",
