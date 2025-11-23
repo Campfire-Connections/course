@@ -9,10 +9,10 @@ class FacilityClassForm(forms.ModelForm):
     class Meta:
         model = FacilityClass
         fields = [
+            "name",
+            "description",
             "facility_enrollment",
             "organization_course",
-            "start_time",
-            "end_time",
             "max_enrollment",
         ]
 
