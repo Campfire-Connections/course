@@ -25,6 +25,8 @@ class ShowView(BaseDetailView):
     model = FacilityClass
     template_name = "facility-class/show.html"
     context_object_name = "facility_class"
+    slug_field = "slug"
+    slug_url_kwarg = "facility_class_slug"
 
 
 class CreateView(BaseCreateView):
@@ -33,15 +35,37 @@ class CreateView(BaseCreateView):
     template_name = "facility-class/form.html"
     success_url = reverse_lazy("facilities:classes:index")
 
+    def get_success_url(self):
+        return reverse_lazy(
+            "facilities:classes:index",
+            kwargs={"facility_slug": self.kwargs.get("facility_slug")},
+        )
+
 
 class UpdateView(BaseUpdateView):
     model = FacilityClass
     fields = "__all__"
     template_name = "facility-class/form.html"
     success_url = reverse_lazy("facilities:classes:index")
+    slug_field = "slug"
+    slug_url_kwarg = "facility_class_slug"
+
+    def get_success_url(self):
+        return reverse_lazy(
+            "facilities:classes:index",
+            kwargs={"facility_slug": self.kwargs.get("facility_slug")},
+        )
 
 
 class DeleteView(BaseDeleteView):
     model = FacilityClass
     template_name = "facility-class/confirm_delete.html"
     success_url = reverse_lazy("facilities:classes:index")
+    slug_field = "slug"
+    slug_url_kwarg = "facility_class_slug"
+
+    def get_success_url(self):
+        return reverse_lazy(
+            "facilities:classes:index",
+            kwargs={"facility_slug": self.kwargs.get("facility_slug")},
+        )
