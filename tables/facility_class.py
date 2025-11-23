@@ -54,7 +54,7 @@ class FacilityClassTable(BaseTable):
     """
 
     facility_enrollment = tables.Column(
-        accessor="facility_enrollment.facility.name", verbose_name="Facility"
+        accessor="facility_enrollment__facility__name", verbose_name="Facility"
     )
     max_enrollment = tables.Column(verbose_name="Capacity")
 
