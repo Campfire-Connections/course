@@ -1,34 +1,41 @@
 # course/views/requirement.py
 
 from django.urls import reverse_lazy
-from django.views.generic import (
-    ListView as _ListView,
-    CreateView as _CreateView,
-    UpdateView as _UpdateView,
-    DeleteView as _DeleteView,
+
+from core.views.base import (
+    BaseTableListView,
+    BaseCreateView,
+    BaseUpdateView,
+    BaseDeleteView,
 )
+
 from ..models.requirement import Requirement
 from ..tables.requirement import RequirementTable
 from ..forms.requirement import RequirementForm
 
-class ListView(_ListView):
+
+class ListView(BaseTableListView):
     model = Requirement
-    template_name = 'requirement/list.html'
+    template_name = "requirement/list.html"
     table_class = RequirementTable
+    context_object_name = "requirements"
 
-class CreateView(_CreateView):
+
+class CreateView(BaseCreateView):
     model = Requirement
     form_class = RequirementForm
-    template_name = 'requirement/form.html'
-    success_url = reverse_lazy('courses:requirements:list')
+    template_name = "requirement/form.html"
+    success_url = reverse_lazy("courses:requirements:list")
 
-class UpdateView(_UpdateView):
+
+class UpdateView(BaseUpdateView):
     model = Requirement
     form_class = RequirementForm
-    template_name = 'requirement/form.html'
-    success_url = reverse_lazy('courses:requirements:list')
+    template_name = "requirement/form.html"
+    success_url = reverse_lazy("courses:requirements:list")
 
-class DeleteView(_DeleteView):
+
+class DeleteView(BaseDeleteView):
     model = Requirement
-    template_name = 'requirement/confirm_delete.html'
-    success_url = reverse_lazy('courses:requirements:list')
+    template_name = "requirement/confirm_delete.html"
+    success_url = reverse_lazy("courses:requirements:list")
