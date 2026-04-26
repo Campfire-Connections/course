@@ -20,22 +20,25 @@ class ListView(BaseTableListView):
     table_class = RequirementTable
     context_object_name = "requirements"
 
+    def get_queryset(self):
+        return Requirement.objects.order_by("name")
+
 
 class CreateView(BaseCreateView):
     model = Requirement
     form_class = RequirementForm
     template_name = "requirement/form.html"
-    success_url = reverse_lazy("courses:requirements:list")
+    success_url = reverse_lazy("requirements:list")
 
 
 class UpdateView(BaseUpdateView):
     model = Requirement
     form_class = RequirementForm
     template_name = "requirement/form.html"
-    success_url = reverse_lazy("courses:requirements:list")
+    success_url = reverse_lazy("requirements:list")
 
 
 class DeleteView(BaseDeleteView):
     model = Requirement
     template_name = "requirement/confirm_delete.html"
-    success_url = reverse_lazy("courses:requirements:list")
+    success_url = reverse_lazy("requirements:list")

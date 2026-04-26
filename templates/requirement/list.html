@@ -1,0 +1,10 @@
+{% extends 'base/list.html' %}
+
+{% block title_text %}Requirements{% endblock title_text %}
+
+{% block new_url %}{% url 'requirements:create' %}{% endblock new_url %}
+{% block new_label %}
+    New Requirement
+{% endblock new_label %}
+
+{% block table_caption %}<p class="sr-only">Requirements</p>{% endblock table_caption %}
