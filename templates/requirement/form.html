@@ -1,0 +1,7 @@
+{% extends 'base/form.html' %}
+
+{% block form_title %}{% if object %}Edit Requirement{% else %}New Requirement{% endif %}{% endblock form_title %}
+{% block form_heading %}{% if object %}Edit Requirement{% else %}New Requirement{% endif %}{% endblock form_heading %}
+{% block submit_label %}{% if object %}Save Requirement{% else %}Create Requirement{% endif %}{% endblock submit_label %}
+{% block cancel_url %}{% url 'requirements:list' %}{% endblock cancel_url %}
+{% block cancel_url_bottom %}{% url 'requirements:list' %}{% endblock cancel_url_bottom %}
