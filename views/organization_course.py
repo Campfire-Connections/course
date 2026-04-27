@@ -11,9 +11,9 @@ from core.views.base import (
 )
 
 from ..models.course import Course
-    Similar patterns for related topics.  
-- Use markdown., ..tables.course import CourseTable
+from ..tables.course import CourseTable
 from ..forms.course import CourseForm
+from ..selectors import course_detail_queryset, course_list_queryset
 
 
 class IndexView(BaseTableListView):
@@ -21,6 +21,9 @@ class IndexView(BaseTableListView):
     template_name = "course/list.html"
     table_class = CourseTable
     context_object_name = "courses"
+
+    def get_queryset(self):
+        return course_list_queryset()
 
 
 class CreateView(BaseCreateView):
@@ -52,7 +55,4 @@ class ShowView(BaseDetailView):
     pk_url_kwarg = "course_id"
 
     def get_queryset(self):
-        return (
-            Course.objects.select_related("parent")
-            .prefetch_related("requirements", "prerequisites")
-        )
+        return course_detail_queryset()

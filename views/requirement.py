@@ -13,6 +13,7 @@ from core.views.base import (
 from ..models.requirement import Requirement
 from ..tables.requirement import RequirementTable
 from ..forms.requirement import RequirementForm
+from ..selectors import requirement_detail_queryset, requirement_list_queryset
 
 
 class ListView(BaseTableListView):
@@ -22,7 +23,7 @@ class ListView(BaseTableListView):
     context_object_name = "requirements"
 
     def get_queryset(self):
-        return Requirement.objects.order_by("name")
+        return requirement_list_queryset()
 
 
 class CreateView(BaseCreateView):
@@ -38,6 +39,9 @@ class ShowView(BaseDetailView):
     context_object_name = "requirement"
     slug_field = "slug"
     slug_url_kwarg = "slug"
+
+    def get_queryset(self):
+        return requirement_detail_queryset()
 
 
 class UpdateView(BaseUpdateView):
