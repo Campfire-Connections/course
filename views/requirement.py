@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 
 from core.views.base import (
     BaseTableListView,
+    BaseDetailView,
     BaseCreateView,
     BaseUpdateView,
     BaseDeleteView,
@@ -28,17 +29,25 @@ class CreateView(BaseCreateView):
     model = Requirement
     form_class = RequirementForm
     template_name = "requirement/form.html"
-    success_url = reverse_lazy("requirements:list")
+    success_url = reverse_lazy("requirements:index")
+
+
+class ShowView(BaseDetailView):
+    model = Requirement
+    template_name = "base/show.html"
+    context_object_name = "requirement"
+    slug_field = "slug"
+    slug_url_kwarg = "slug"
 
 
 class UpdateView(BaseUpdateView):
     model = Requirement
     form_class = RequirementForm
     template_name = "requirement/form.html"
-    success_url = reverse_lazy("requirements:list")
+    success_url = reverse_lazy("requirements:index")
 
 
 class DeleteView(BaseDeleteView):
     model = Requirement
     template_name = "requirement/confirm_delete.html"
-    success_url = reverse_lazy("requirements:list")
+    success_url = reverse_lazy("requirements:index")

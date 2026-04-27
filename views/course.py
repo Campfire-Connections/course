@@ -27,20 +27,20 @@ class CreateView(BaseCreateView):
     model = Course
     form_class = CourseForm
     template_name = "course/form.html"
-    success_url = reverse_lazy("courses:list")
+    success_url = reverse_lazy("courses:index")
 
 
 class UpdateView(BaseUpdateView):
     model = Course
     form_class = CourseForm
     template_name = "course/form.html"
-    success_url = reverse_lazy("courses:list")
+    success_url = reverse_lazy("courses:index")
 
 
 class DeleteView(BaseDeleteView):
     model = Course
     template_name = "course/delete.html"
-    success_url = reverse_lazy("courses:list")
+    success_url = reverse_lazy("courses:index")
 
 class ShowView(BaseDetailView):
     model = Course
