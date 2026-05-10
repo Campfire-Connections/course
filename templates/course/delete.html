@@ -1,2 +1,7 @@
 {% extends "base/confirm_delete.html" %}
 {% block title_text %}Delete Course{% endblock title_text %}
+{% block confirm_title %}Delete Course{% endblock confirm_title %}
+{% block confirm_message %}
+Deleting "{{ object }}" removes the course from catalog views and future class planning screens. Existing related records should be reviewed before confirming.
+{% endblock confirm_message %}
+{% block confirm_button %}Delete Course{% endblock confirm_button %}

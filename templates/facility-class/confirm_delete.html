@@ -1,2 +1,7 @@
 {% extends "base/confirm_delete.html" %}
 {% block title_text %}Delete Class{% endblock title_text %}
+{% block confirm_title %}Delete Facility Class{% endblock confirm_title %}
+{% block confirm_message %}
+Delete "{{ object }}" from this facility schedule. Review class enrollments and period assignments before confirming.
+{% endblock confirm_message %}
+{% block confirm_button %}Delete Class{% endblock confirm_button %}
